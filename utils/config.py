@@ -106,7 +106,7 @@ ANN_CONFIG = {
 }
 
 # -----------------------------------------------------------
-# Ablation study settings (untuk laporan)
+# Ablation study settings (untuk laporan nantinya)
 # -----------------------------------------------------------
 ABLATION_POP_SIZES   = [5, 10, 30, 50, 100]
 ABLATION_GENERATIONS = [10, 30, 50, 100, 200]

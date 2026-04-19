@@ -39,7 +39,7 @@ from utils.evaluate import compute_metrics
 
 st.set_page_config(
     page_title = "Heart Disease FIS | Soft Computing UTS",
-    page_icon  = "🫀",
+    page_icon  = "heart",
     layout     = "wide",
 )
 
@@ -102,24 +102,63 @@ m3 = compute_metrics(y_test, preds_s3, "FIS + ANN")
 # Header
 # ============================================================
 
-st.title("🫀 Heart Disease Risk Prediction")
+st.title("Heart Disease Risk Prediction")
+st.divider()
 
 # ============================================================
-# Tabs
+# Sidebar Navigation
 # ============================================================
 
-tab1, tab2, tab3, tab4 = st.tabs([
+st.sidebar.header("Navigasi")
+pages = [
     "Prediksi Pasien",
     "Visualisasi MF",
     "Performa Model",
     "Ablation Study",
-])
+]
+
+if "menu" not in st.session_state:
+    st.session_state.menu = pages[0]
+
+for page in pages:
+    btn_type = "primary" if st.session_state.menu == page else "secondary"
+    if st.sidebar.button(page, use_container_width=True, type=btn_type):
+        st.session_state.menu = page
+
+menu = st.session_state.menu
+
+page_bg_map = {
+    "Prediksi Pasien": "#eef7ff",
+    "Visualisasi MF": "#f4f9f4",
+    "Performa Model": "#fff8ed",
+    "Ablation Study": "#f7f4ff",
+}
+
+st.markdown(
+    f"""
+    <style>
+    .stApp [data-testid="block-container"] {{
+        background-color: {page_bg_map.get(menu, "#ffffff")};
+        border: 1px solid #d9e2ec;
+        border-radius: 12px;
+        padding-top: 1.2rem;
+        padding-bottom: 1.2rem;
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+    }}
+    section[data-testid="stSidebar"] .stButton > button {{
+        border-radius: 10px;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 
 # ------------------------------------------------------------
 # TAB 1 – Prediksi Pasien
 # ------------------------------------------------------------
-with tab1:
+if menu == "Prediksi Pasien":
     st.header("Prediksi Risiko Penyakit Jantung")
     st.markdown(
         "Masukkan data pasien dan bandingkan prediksi "
@@ -143,7 +182,7 @@ with tab1:
                            max_value=int(FEATURE_RANGES["thalch"][1]),
                            value=140)
 
-        btn = st.button("🔍 Prediksi", type="primary", use_container_width=True)
+        btn = st.button("Prediksi", type="primary", use_container_width=True)
 
     with col_out:
         st.subheader("Hasil Prediksi")
@@ -161,21 +200,21 @@ with tab1:
             lb3 = int(fis_predict_vectorized(sample_arr, ann_mf)[1][0])
 
             def badge(label):
-                return "🔴 **Disease**" if label == 1 else "🟢 **No Disease**"
+                return "**Disease**" if label == 1 else "**No Disease**"
 
             systems = [
-                ("🔵 FIS Manual",  sc1,  lb1),
-                ("🟠 FIS + GA",    sc2,  lb2),
-                ("🟢 FIS + ANN",   sc3,  lb3),
+                ("FIS Manual",  sc1,  lb1),
+                ("FIS + GA",    sc2,  lb2),
+                ("FIS + ANN",   sc3,  lb3),
             ]
 
             def interpret_risk(score):
                 if score >= 0.7:
-                    return "🔴 Risiko Tinggi – Disarankan pemeriksaan lanjutan"
+                    return "Risiko Tinggi – Disarankan pemeriksaan lanjutan"
                 elif score >= 0.4:
-                    return "🟡 Risiko Sedang – Perlu monitoring & gaya hidup sehat"
+                    return "Risiko Sedang – Perlu monitoring & gaya hidup sehat"
                 else:
-                    return "🟢 Risiko Rendah – Kondisi relatif aman"
+                    return "Risiko Rendah – Kondisi relatif aman"
 
             for name, score, label in systems:
                 st.markdown(f"**{name}**")
@@ -187,16 +226,16 @@ with tab1:
                 st.divider()
 
         else:
-            st.info("← Isi data pasien dan klik **Prediksi**.")
+            st.info("Isi data pasien dan klik Prediksi")
 
 
 # ------------------------------------------------------------
 # TAB 2 – Visualisasi MF
 # ------------------------------------------------------------
-with tab2:
+elif menu == "Visualisasi MF":
     st.header("Visualisasi Membership Functions")
     view = st.radio("Pilih tampilan:",
-                    ["Semua Tahap (Overlay)", "Per Tahap", "Sensitivity Curves ANN"],
+                    ["Semua Tahap", "Per Tahap", "Sensitivity Curves ANN"],
                     horizontal=True)
 
     if view == "Per Tahap":
@@ -281,7 +320,7 @@ with tab2:
 # ------------------------------------------------------------
 # TAB 3 – Performa Model
 # ------------------------------------------------------------
-with tab3:
+elif menu == "Performa Model":
     st.header("Perbandingan Performa Ketiga Sistem")
 
     # ── Tabel ringkasan ─────────────────────────────────────
@@ -345,7 +384,7 @@ with tab3:
 # ------------------------------------------------------------
 # TAB 4 – Ablation Study
 # ------------------------------------------------------------
-with tab4:
+elif menu == "Ablation Study":
     st.header("Ablation Study – Konvergensi GA")
     st.markdown(
         "Analisis pengaruh **Population Size** dan **Jumlah Generasi** "
@@ -418,15 +457,3 @@ with tab4:
     ax_conv.legend(); ax_conv.grid(True, alpha=0.3)
     ax_conv.spines[["top","right"]].set_visible(False)
     st.pyplot(fig_conv, use_container_width=True); plt.close(fig_conv)
-
-
-# ============================================================
-# Footer
-# ============================================================
-
-st.divider()
-st.caption(
-    "🏫 Universitas Padjadjaran – Teknik Informatika  |  "
-    "UTS Soft Computing 2025/2026  |  "
-    "Dr. Ir. Intan Nurma Yulita, M.T"
-)

@@ -15,7 +15,7 @@ DATASET_PATH = "heart_disease_uci.csv"
 # Features digunakan sebagai input FIS (3 fitur numerik utama)
 FEATURES       = ["age", "chol", "thalch"] # input untuk FIS yaitu umur, kolesterol, dan max heart rate
 TARGET_COL     = "num"          # 0 = no disease, 1-4 = disease
-BINARY_TARGET  = True           # True → binarize num: 0 vs >0
+BINARY_TARGET  = True           # True → binarize num: 0 vs > 0
 RANDOM_STATE   = 42
 TEST_SIZE      = 0.2
 

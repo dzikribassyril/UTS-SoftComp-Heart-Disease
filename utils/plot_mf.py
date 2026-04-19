@@ -1,6 +1,10 @@
 # ============================================================
-#  plot_mf.py  –  Membership Function visualization
+#  plot_mf.py  –  Visualisasi Membership Function (MF)
 #  Heart Disease Risk Prediction | Soft Computing UTS 2025/2026
+#  Anggota:
+#    1. 140810230008 – Robby Azwan Saputra
+#    2. 140810230071 – Dzikri Basyril Mu'Minin 
+#    3. 140810230074 – Farhan Zia Rizky
 # ============================================================
 
 import numpy as np
@@ -114,7 +118,7 @@ def plot_all_mf(mf_input: dict, mf_output: dict,
 
 # ------------------------------------------------------------
 # 3. Plot perbandingan MF sebelum vs sesudah optimasi (Analisis
-#    Pergeseran Kurva — wajib ada di laporan)
+#    Pergeseran Kurva)
 # ------------------------------------------------------------
 def plot_mf_comparison(var_name: str,
                        mf_before: dict,
@@ -150,7 +154,7 @@ def plot_mf_comparison(var_name: str,
         line_b, = ax.plot(x, y_before, color=color, linewidth=2.5,
                           linestyle="-", label=f"{label} (Manual)")
 
-        # Sesudah (dashed), jika tersedia
+        # Sesudah (dashed)
         if label in mf_after:
             y_after = trimf(x, mf_after[label])
             ax.plot(x, y_after, color=color, linewidth=2,
@@ -179,7 +183,7 @@ def plot_mf_comparison(var_name: str,
 
 
 # ------------------------------------------------------------
-# 4. Plot konvergensi GA (untuk Ablation Study)
+# 4. Plot konvergensi GA (fitness terbaik per generasi)
 # ------------------------------------------------------------
 def plot_ga_convergence(history: dict,
                         title: str = "Konvergensi GA") -> plt.Figure:

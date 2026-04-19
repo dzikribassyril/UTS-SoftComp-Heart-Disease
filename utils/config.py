@@ -1,22 +1,26 @@
 # ============================================================
-#  config.py  –  Central configuration for all stages
+#  config.py  –  konfigurasi / rule untuk FIS, GA, ANN
 #  Heart Disease Risk Prediction | Soft Computing UTS 2025/2026
+#  Anggota:
+#    1. 140810230008 – Robby Azwan Saputra
+#    2. 140810230071 – Dzikri Basyril Mu'Minin 
+#    3. 140810230074 – Farhan Zia Rizky
 # ============================================================
 
 # -----------------------------------------------------------
-# Dataset
+# Datasetnya
 # -----------------------------------------------------------
 DATASET_PATH = "heart_disease_uci.csv"
 
 # Features digunakan sebagai input FIS (3 fitur numerik utama)
-FEATURES       = ["age", "chol", "thalch"]
+FEATURES       = ["age", "chol", "thalch"] # input untuk FIS yaitu umur, kolesterol, dan max heart rate
 TARGET_COL     = "num"          # 0 = no disease, 1-4 = disease
 BINARY_TARGET  = True           # True → binarize num: 0 vs >0
 RANDOM_STATE   = 42
 TEST_SIZE      = 0.2
 
 # -----------------------------------------------------------
-# Feature ranges (dari eksplorasi data)
+# Feature ranges (dari eksplorasi data di dataset)
 # -----------------------------------------------------------
 FEATURE_RANGES = {
     "age"   : (28,  77),
@@ -26,22 +30,22 @@ FEATURE_RANGES = {
 
 # -----------------------------------------------------------
 # Stage 1 – Manual MF parameters  (trimf: [a, b, c])
-# Ditentukan berdasarkan intuisi / domain knowledge medis
+# Ditentukan berdasarkan intuisi manusia / kelompok kami + internet (pakar)
 # -----------------------------------------------------------
 MF_PARAMS_MANUAL = {
     "age": {
-        "young" : [28,  28,  45],   # < 45 tahun
-        "middle": [38,  52,  65],   # 38–65 tahun
-        "old"   : [58,  77,  77],   # > 58 tahun
+        "young" : [28,  28,  45],   # < 45 tahun/muda
+        "middle": [38,  52,  65],   # 38–65 tahun/tengah
+        "old"   : [58,  77,  77],   # > 58 tahun/tua
     },
     "chol": {
         "normal"    : [100, 100, 200],  # < 200 mg/dL  → normal
-        "borderline": [175, 230, 280],  # 200–239 mg/dL → batas
+        "borderline": [175, 230, 280],  # 200–239 mg/dL → batas/borderline
         "high"      : [250, 603, 603],  # ≥ 240 mg/dL   → tinggi
     },
     "thalch": {
         "low"   : [60,  60,  120],  # max heart rate rendah → buruk
-        "medium": [100, 150, 170],
+        "medium": [100, 150, 170], # max heart rate sedang → sedang
         "high"  : [150, 202, 202],  # max heart rate tinggi → lebih sehat
     },
 }

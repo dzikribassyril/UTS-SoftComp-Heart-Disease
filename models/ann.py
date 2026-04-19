@@ -1,4 +1,8 @@
 #  Pendekatan: ANN-guided MF Optimization (Sensitivity Analysis)
+#  Anggota:
+#    1. 140810230008 – Robby Azwan Saputra
+#    2. 140810230071 – Dzikri Basyril Mu'Minin 
+#    3. 140810230074 – Farhan Zia Rizky
 #
 #  Langkah:
 #  1. Latih MLPClassifier pada fitur [age, chol, thalch]
@@ -8,7 +12,7 @@
 #  4. Susun kembali trimf baru dari titik transisi tersebut
 #  5. Evaluasi FIS dengan MF baru vs FIS manual
 #
-#  Kenapa ini valid?
+#  Alasan pendekatan ini:
 #  - MF manual dibuat dari intuisi; ANN mempelajari pola data nyata
 #  - Titik transisi ANN ↔ "batas keputusan" data-driven
 #  - Hasilnya adalah MF yang lebih sesuai distribusi data

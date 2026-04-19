@@ -1,8 +1,11 @@
-# ============================================================
-#  app.py  –  Streamlit Application (LENGKAP)
+# ========================================================================================================================
+#  app.py  –  Aplikasi Streamlit Utama untuk Prediksi Risiko Penyakit Jantung serta visualisasi MF dan evaluasi model
 #  Heart Disease Risk Prediction | Soft Computing UTS 2025/2026
-#  Jalankan: streamlit run app.py
-# ============================================================
+#  Anggota:
+#    1. 140810230008 – Robby Azwan Saputra
+#    2. 140810230071 – Dzikri Basyril Mu'Minin 
+#    3. 140810230074 – Farhan Zia Rizky
+# ========================================================================================================================
 
 import streamlit as st
 import numpy as np
@@ -71,7 +74,7 @@ def get_ablation(_X_train, _y_train):
 
 
 # ============================================================
-# Load semua data & model
+# Load selruh data & model
 # ============================================================
 
 X_train, X_test, y_train, y_test, df_clean = get_data()
@@ -166,12 +169,21 @@ with tab1:
                 ("🟢 FIS + ANN",   sc3,  lb3),
             ]
 
+            def interpret_risk(score):
+                if score >= 0.7:
+                    return "🔴 Risiko Tinggi – Disarankan pemeriksaan lanjutan"
+                elif score >= 0.4:
+                    return "🟡 Risiko Sedang – Perlu monitoring & gaya hidup sehat"
+                else:
+                    return "🟢 Risiko Rendah – Kondisi relatif aman"
+
             for name, score, label in systems:
                 st.markdown(f"**{name}**")
                 c1, c2 = st.columns(2)
                 c1.metric("Risk Score", f"{score:.4f}")
                 c2.markdown(f"<br>{badge(label)}", unsafe_allow_html=True)
                 st.progress(float(np.clip(score, 0, 1)))
+                st.caption(interpret_risk(score))
                 st.divider()
 
         else:

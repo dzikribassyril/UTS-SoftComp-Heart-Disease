@@ -1,3 +1,9 @@
+# FIS
+#  Anggota:
+#    1. 140810230008 – Robby Azwan Saputra
+#    2. 140810230071 – Dzikri Basyril Mu'Minin 
+#    3. 140810230074 – Farhan Zia Rizky
+#
 #  Alur Mamdani FIS:
 #  1. Fuzzifikasi   → hitung derajat keanggotaan tiap input
 #  2. Rule Firing   → evaluasi tiap rule (AND = min)

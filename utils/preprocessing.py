@@ -1,6 +1,10 @@
 # ============================================================
-#  preprocessing.py  –  Data loading & preparation
+#  preprocessing.py  –  preprocessing pipeline untuk data jantung
 #  Heart Disease Risk Prediction | Soft Computing UTS 2025/2026
+#  Anggota:
+#    1. 140810230008 – Robby Azwan Saputra
+#    2. 140810230071 – Dzikri Basyril Mu'Minin 
+#    3. 140810230074 – Farhan Zia Rizky
 # ============================================================
 
 import pandas as pd

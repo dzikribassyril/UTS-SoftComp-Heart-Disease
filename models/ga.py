@@ -1,7 +1,10 @@
 # ============================================================
-#  stage2_ga_tuning.py  –  Tahap 2: GA Tuning (LENGKAP)
-#  Heart Disease Risk Prediction | Soft Computing UTS 2025/2026
+#  ga.py  –  Tahap 2: GA Tuning MF
 # ============================================================
+#  Anggota:
+#    1. 140810230008 – Robby Azwan Saputra
+#    2. 140810230071 – Dzikri Basyril Mu'Minin 
+#    3. 140810230074 – Farhan Zia Rizky
 #
 #  Yang dioptimasi : titik-titik [a, b, c] setiap trimf INPUT
 #  Rules           : TIDAK diubah (tetap dari Tahap 1)

@@ -25,14 +25,12 @@ def load_raw(path: str = DATASET_PATH) -> pd.DataFrame:
     """Memuat file CSV mentah."""
     candidate_paths = []
 
-    # 1) Path dari argumen/config (bisa relatif atau absolut).
     given = Path(path)
     candidate_paths.append(given)
     if not given.is_absolute():
         project_root = Path(__file__).resolve().parents[1]
         candidate_paths.append(project_root / given)
 
-    # 2) Fallback nama file umum pada folder data.
     project_root = Path(__file__).resolve().parents[1]
     candidate_paths.extend([
         project_root / "data" / "heart_disease.csv",

@@ -8,11 +8,14 @@
 Library yang dibutuhkan :
 
 ```
-streamlit
 numpy
 pandas
 matplotlib
 scikit-learn
+scikit-fuzzy
+streamlit
+networkx
+
 ```
 
 ---
@@ -39,6 +42,7 @@ streamlit run app.py
 ```
 
 Aplikasi akan terbuka otomatis di browser pada alamat `http://localhost:8501`.
+Jika ingin mengakses langsung tanpa clone atau ekstrak folder script program klik link berikut: https://uts-softcomp-heart-disease-fis.streamlit.app/
 
 ---
 

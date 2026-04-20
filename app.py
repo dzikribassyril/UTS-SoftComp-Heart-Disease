@@ -264,7 +264,7 @@ elif menu == "Visualisasi MF":
             st.dataframe(ann_shift(MF_PARAMS_MANUAL, ann_mf),
                          use_container_width=True, hide_index=True)
 
-    elif view == "Semua Tahap (Overlay)":
+    elif view == "Semua Tahap":
         st.subheader("Pergeseran Kurva MF – Analisis Komparatif")
         selected_var = st.selectbox("Pilih variabel:", FEATURES)
 

@@ -5,7 +5,7 @@
 - Python 3.9 atau lebih baru
 - pip (Python package manager)
 
-**Library yang dibutuhkan:**
+Library yang dibutuhkan :
 
 ```
 streamlit
@@ -18,12 +18,11 @@ scikit-learn
 ---
 
 ## Instalasi
-
-**1. Clone atau ekstrak folder proyek**
+### 1. Clone atau ekstrak folder proyek
 
 https://github.com/dzikribassyril/UTS-SoftComp-Heart-Disease
 
-**2. Install seluruh dependency**
+### 2. Install seluruh dependency
 
 Buka terminal, arahkan ke direktori proyek, lalu jalankan:
 
@@ -45,7 +44,7 @@ Aplikasi akan terbuka otomatis di browser pada alamat `http://localhost:8501`.
 
 ## Panduan Penggunaan Per Halaman
 
-Navigasi antar halaman tersedia pada **sidebar** di sebelah kiri.
+Navigasi antar halaman tersedia pada sidebar di sebelah kiri.
 
 ---
 
@@ -53,14 +52,14 @@ Navigasi antar halaman tersedia pada **sidebar** di sebelah kiri.
 
 Halaman ini digunakan untuk memprediksi risiko penyakit jantung seorang pasien menggunakan ketiga sistem sekaligus.
 
-**Langkah penggunaan:**
+Langkah penggunaan :
 
 1. Atur nilai input menggunakan slider yang tersedia:
    - Usia —> rentang 28 hingga 77 tahun
    - Kolesterol —> rentang 100 hingga 603 mg/dL
    - Max Heart Rate —> rentang 60 hingga 202 bpm
 
-2. Klik tombol **Prediksi**.
+2. Klik tombol Prediksi.
 
 3. Hasil akan ditampilkan untuk ketiga sistem:
    - FIS Manual : Sistem berbasis aturan yang dirancang secara manual
@@ -75,7 +74,7 @@ Halaman ini digunakan untuk memprediksi risiko penyakit jantung seorang pasien m
 
 Halaman ini menampilkan bentuk Membership Function dari setiap tahap dan analisis pergeserannya.
 
-**Tiga mode tampilan :**
+Tiga mode tampilan :
 
 - Per Tahap : Menampilkan MF Tahap 1, 2, dan 3 secara terpisah beserta tabel pergeseran parameter.
 
@@ -89,7 +88,7 @@ Halaman ini menampilkan bentuk Membership Function dari setiap tahap dan analisi
 
 Halaman ini menampilkan perbandingan performa ketiga sistem pada data uji.
 
-**Konten yang ditampilkan:**
+Konten yang ditampilkan :
 
 - Tabel metrik (Accuracy, Precision, Recall, F1 Score) dengan highlight nilai terbaik.
 - Bar chart perbandingan metrik secara visual.
@@ -101,7 +100,7 @@ Halaman ini menampilkan perbandingan performa ketiga sistem pada data uji.
 
 Halaman ini menampilkan hasil eksperimen variasi parameter GA untuk analisis konvergensi.
 
-**Konten yang ditampilkan:**
+Konten yang ditampilkan :
 
 - Grafik konvergensi dengan variasi Population Size (gen = 50 tetap).
 - Grafik konvergensi dengan variasi Jumlah Generasi (pop = 30 tetap).
